@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import WaterIntakeForm from './WaterIntakeForm';
 
-function App() {
+const App: React.FC = () => {
+  const [intakeGoal, setIntakeGoal] = useState<number | null>(null);
+  const [currentIntake, setCurrentIntake] = useState(0);
+
+  const handleFormSubmit = (goal: number) => {
+    setIntakeGoal(goal);
+  };
+
+  const handleIntakeSubmit = (intake: number) => {
+    setCurrentIntake(intake);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row className="mt-5">
+        <Col>
+          <h1>Water Intake Tracker</h1>
+          <WaterIntakeForm
+            onSubmitGoal={handleFormSubmit}
+            onSubmitIntake={handleIntakeSubmit}
+            currentGoal={intakeGoal}
+            currentIntake={currentIntake}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;
