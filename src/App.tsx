@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Navbar } from 'react-bootstrap';
 import WaterIntakeForm from './WaterIntakeForm';
 
 const App: React.FC = () => {
@@ -16,9 +16,13 @@ const App: React.FC = () => {
 
   return (
     <Container>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand>
+          <h2>Water Intake Tracker</h2>
+        </Navbar.Brand>
+      </Navbar>
       <Row className="mt-5">
         <Col>
-          <h1>Water Intake Tracker</h1>
           <WaterIntakeForm
             onSubmitGoal={handleFormSubmit}
             onSubmitIntake={handleIntakeSubmit}

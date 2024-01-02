@@ -52,43 +52,50 @@ interface WaterIntakeFormProps {
     };
   
     return (
-      <div>
+      <div className='my-4'>
         {currentGoal !== null ? (
           <>
-            <h2>Track Your Water Intake</h2>
-            <p>Current Goal: {currentGoal} fl oz</p>
-            <p>Current Intake: {currentIntake} fl oz ({calculatePercentage()}% of Goal)</p>
+            <h2 className='mb-4'>Track Your Water Intake</h2>
+            <p className='mb-3'>Current Goal: {currentGoal} fl oz</p>
+            <p className='mb-3'>Current Intake: {currentIntake} fl oz ({calculatePercentage()}% of Goal)</p>
             <Form onSubmit={handleSubmitIntake}>
               <Form.Group controlId="waterIntakeAmount">
-                <Form.Label>Enter water intake amount (in fl oz)</Form.Label>
+                <Form.Label className='mb-3'><h4>Enter water intake amount (in fl oz)</h4></Form.Label>
+                <div style={{display: 'flex'}}>
                 <Form.Control
                   type="number"
                   placeholder="Enter intake amount"
                   value={intakeAmount}
                   onChange={handleIntakeInputChange}
+                  style={{ maxWidth: '25rem', marginRight: "5px" }}
                   required
                 />
-              </Form.Group>
-              <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit">
                 Log Intake
-              </Button>
+              </Button></div>
+              </Form.Group>
+              
             </Form>
           </>
         ) : (
           <Form onSubmit={handleGoalSubmit}>
             <Form.Group controlId="waterIntakeGoal">
-              <Form.Label>Enter your daily water intake goal (in fl oz)</Form.Label>
+              <Form.Label className='mr-2'><h4>Enter your daily water intake goal (in fl oz)</h4></Form.Label>
+              <div style={{display: 'flex'}}>
               <Form.Control
                 type="number"
                 placeholder="Enter goal"
                 value={goal}
                 onChange={handleGoalInputChange}
+                style={{ maxWidth: '25rem', marginRight: "5px" }}
                 required
               />
-            </Form.Group>
-            <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit">
               Submit
             </Button>
+            </div>
+            </Form.Group>
+            
           </Form>
         )}
       </div>
